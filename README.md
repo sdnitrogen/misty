@@ -1,27 +1,30 @@
-# Misty
+## Misty
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 16.2.0.
+A clean UI modern weather app built with Angular and TypeScript.
 
-## Development server
+Check it out here: [coming soon](#)
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+### Features
 
-## Code scaffolding
+- Dark mode and Light mode
+- Search for a location(city) to see it's basic weather now in a clean card view with nice illustartion.
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+### Technologies
 
-## Build
+![Angular](https://img.shields.io/badge/Angular-DD0031?style=for-the-badge&logo=angular&logoColor=white)
+![TypeScript](https://img.shields.io/badge/TypeScript-007ACC?style=for-the-badge&logo=typescript&logoColor=white)
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+### How to run
 
-## Running unit tests
+- Clone this repository to your local system.
+- cd to the project directory on terminal and type `npm install` followed by `ng serve`
+- Go to url: http://localhost:4200 in your browser to check out the app.
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+### Preview
 
-## Running end-to-end tests
+<img src="Screenshot.png" align="center"><br><br>
 
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
+### Support Development
 
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+[!["Buy Me A Coffee"](https://www.buymeacoffee.com/assets/img/custom_images/orange_img.png)](https://www.buymeacoffee.com/sdnitrogen) <br>
+[![Donate](https://img.shields.io/badge/Donate-Paypal-blue?style=for-the-badge)](https://www.paypal.me/sdnitrogen)
