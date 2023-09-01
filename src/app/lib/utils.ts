@@ -57,10 +57,11 @@ export const getDaysData = (
   timezone: number
 ) => {
   const dayscastData: dayscastData[] = [];
-  const nextDaysData = data.list.slice(1);
+  const nextDaysData = data.list;
   const uniqueDays = new Set();
   let count = 0;
-  for (const dayData of nextDaysData) {
+  for (let i = 7; i < 40; i += 8) {
+    const dayData = nextDaysData[i];
     const forecastDate = getLocalTime(dayData.dt, timezone);
     const dayAbbreviation = forecastDate.toLocaleDateString('en', {
       weekday: 'short',
