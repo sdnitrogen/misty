@@ -2,7 +2,7 @@
 
 A clean UI modern weather app built with Angular and TypeScript.
 
-Check it out here: [coming soon](#)
+Check it out here: [https://misty-weather.vercel.app/](https://misty-weather.vercel.app/)
 
 ### Features
 
