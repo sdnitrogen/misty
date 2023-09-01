@@ -1,7 +1,14 @@
 import { Component, OnInit } from '@angular/core';
 import { WeatherService } from './services/weather.service';
 import { weatherData } from './models/weather.model';
-import { weatherImageMap } from './lib/utils';
+import { forecastData } from './models/forecast.model';
+import {
+  getLocalTime,
+  formatTimestamp,
+  weatherImageMap,
+  getDaysData,
+} from './lib/utils';
+import { dayscastData } from './models/dayscast.model';
 
 @Component({
   selector: 'app-root',
@@ -10,9 +17,14 @@ import { weatherImageMap } from './lib/utils';
 })
 export class AppComponent implements OnInit {
   title = 'Misty';
+  headerDay = 'Today';
   darkModeActive = false;
   locationName: string = 'Mountain View';
   weatherData?: weatherData;
+  forecastData?: forecastData;
+  dayscastData?: dayscastData[];
+  sunrise?: string;
+  sunset?: string;
   currentWeatherImg = '';
   error404 = false;
 
@@ -34,8 +46,22 @@ export class AppComponent implements OnInit {
   private getWeatherData(locationName: string) {
     this.weatherService.getWeatherData(locationName).subscribe({
       next: (response) => {
-        this.error404 = false;
+        this.headerDay = getLocalTime(
+          response.dt,
+          response.timezone
+        ).toLocaleString('en-us', {
+          weekday: 'long',
+          month: 'short',
+          day: 'numeric',
+        });
         this.weatherData = response;
+        this.sunrise = formatTimestamp(
+          getLocalTime(response.sys.sunrise, response.timezone)
+        );
+        this.sunset = formatTimestamp(
+          getLocalTime(response.sys.sunset, response.timezone)
+        );
+        this.error404 = false;
         const partOfDay =
           response.sys.sunrise <= response.dt &&
           response.dt <= response.sys.sunset
@@ -46,6 +72,19 @@ export class AppComponent implements OnInit {
         if (weatherName === 'Clear' || weatherName === 'Clouds')
           weatherName += partOfDay;
         this.currentWeatherImg = weatherImageMap[weatherName];
+        this.weatherService.getForecastData(locationName).subscribe({
+          next: (res) => {
+            this.forecastData = res;
+            this.dayscastData = getDaysData(
+              res,
+              getLocalTime(response.dt, response.timezone),
+              response.timezone
+            );
+          },
+          error: (res) => {
+            console.log(res);
+          },
+        });
       },
       error: (response) => {
         this.error404 = true;

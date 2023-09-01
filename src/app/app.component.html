@@ -33,7 +33,7 @@
       </svg>
     </div>
 
-    <h3 class="date__text">Today</h3>
+    <h3 class="date__text">{{ headerDay }}</h3>
 
     <div class="mode-toggle__container">
       <span class="mode-toggle__text">Light</span>
@@ -58,7 +58,7 @@
     </div>
   </header>
   <section class="main__container">
-    <div class="card" *ngIf="weatherData">
+    <div class="left-card" *ngIf="weatherData">
       <div class="search-box">
         <i-lucide name="map-pin" class="my-icon"></i-lucide>
         <form #form="ngForm" (ngSubmit)="onSearch()">
@@ -108,6 +108,80 @@
           </div>
         </div>
       </div>
+    </div>
+    <div class="right-card" *ngIf="weatherData" [ngClass]="{ faded: error404 }">
+      <div class="day-info">
+        <div>
+          <i-lucide name="thermometer-snowflake" class="my-icon"></i-lucide>
+          <span class="title">LOWEST TEMPERATURE</span>
+          <span class="value">{{ weatherData.main.temp_min }} °C</span>
+        </div>
+        <div>
+          <i-lucide name="thermometer-sun" class="my-icon"></i-lucide>
+          <span class="title">HIGHEST TEMPERATURE</span>
+          <span class="value">{{ weatherData.main.temp_max }} °C</span>
+        </div>
+        <div *ngIf="forecastData">
+          <i-lucide name="umbrella" class="my-icon"></i-lucide>
+          <span class="title">PRECIPITATION</span>
+          <span class="value">{{ forecastData.list[0].pop }} %</span>
+        </div>
+        <div>
+          <i-lucide name="sunrise" class="my-icon"></i-lucide>
+          <span class="title">SUNRISE</span>
+          <span class="value">{{ sunrise }} AM</span>
+        </div>
+        <div>
+          <i-lucide name="sunset" class="my-icon"></i-lucide>
+          <span class="title">SUNSET</span>
+          <span class="value">{{ sunset }} PM</span>
+        </div>
+      </div>
+
+      <div class="divider"></div>
+
+      <ul class="days-list" *ngIf="dayscastData">
+        <li>
+          <i-lucide
+            name="{{ dayscastData[0].icon }}"
+            class="my-icon"
+          ></i-lucide>
+          <span>{{ dayscastData[0].day }}</span>
+          <span class="day-temp">{{ dayscastData[0].temp }}</span>
+        </li>
+        <li>
+          <i-lucide
+            name="{{ dayscastData[1].icon }}"
+            class="my-icon"
+          ></i-lucide>
+          <span>{{ dayscastData[1].day }}</span>
+          <span class="day-temp">{{ dayscastData[1].temp }}</span>
+        </li>
+        <li>
+          <i-lucide
+            name="{{ dayscastData[2].icon }}"
+            class="my-icon"
+          ></i-lucide>
+          <span>{{ dayscastData[2].day }}</span>
+          <span class="day-temp">{{ dayscastData[2].temp }}</span>
+        </li>
+        <li>
+          <i-lucide
+            name="{{ dayscastData[3].icon }}"
+            class="my-icon"
+          ></i-lucide>
+          <span>{{ dayscastData[3].day }}</span>
+          <span class="day-temp">{{ dayscastData[3].temp }}</span>
+        </li>
+        <li>
+          <i-lucide
+            name="{{ dayscastData[4].icon }}"
+            class="my-icon"
+          ></i-lucide>
+          <span>{{ dayscastData[4].day }}</span>
+          <span class="day-temp">{{ dayscastData[4].temp }}</span>
+        </li>
+      </ul>
     </div>
   </section>
 </main>
