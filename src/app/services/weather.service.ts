@@ -22,15 +22,12 @@ export class WeatherService {
   }
 
   getForecastData(location: string): Observable<forecastData> {
-    return this.http.get<forecastData>(
-      'https://api.openweathermap.org/data/2.5/forecast',
-      {
-        params: new HttpParams()
-          .set('q', location)
-          .set('units', 'metric')
-          .set('mode', 'json')
-          .set('appid', environment.ApiKey),
-      }
-    );
+    return this.http.get<forecastData>(environment.forecastApiBaseUrl, {
+      params: new HttpParams()
+        .set('q', location)
+        .set('units', 'metric')
+        .set('mode', 'json')
+        .set('appid', environment.ApiKey),
+    });
   }
 }

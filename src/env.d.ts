@@ -13,6 +13,7 @@ interface ImportMetaEnv {
   [key: string]: any;
   readonly API_KEY: string;
   readonly API_BASE_URL: string;
+  readonly API_BASE_URL_FORECAST: string;
 }
 
 /*
