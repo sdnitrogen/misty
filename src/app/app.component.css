@@ -465,6 +465,10 @@
     height: 38rem;
   }
 
+  .search-box input {
+    font-size: 1rem;
+  }
+
   .right-card {
     width: 22rem;
     height: 27.5rem;
